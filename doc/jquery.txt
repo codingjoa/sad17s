@@ -1,0 +1,68 @@
+
+JQuery 사용법
+$(function(){
+  // 이 안에다 JQuery 선택자와 메서드를 사용해야 합니다.
+  // 외부에서 사용하면 오류남
+  $('선택자').메서드();
+});
+
+## 객체 선택
+$('tag') 요구하는 tag 이름을 가진 모든 html 태그를 선택합니다. $('p').메서드;
+$('#id') 요구하는 id 이름을 가진 html 태그를 선택합니다. $('#slide').메서드;
+$('.class') 요구하는 class 이름을 가진 모든 html 태그를 선택합니다. $('.show');
+$(this)
+$('div').find('p'); div 하위에 있는 p 태그를 모두 선택
+$('#slide').children('.show') #slide 바로 밑에 있는 .show 클래스를 모두 선택
+$('.show').eq(0); 첫번째 .show 클래스 선택
+$('#slide').children('.show').eq(0); #slide 바로 밑에 있는 첫번째 .show 클래스 선택
+var slide = $('#slide'); slide 변수에 #slide 아이디 저장함 (변수에 저장 가능)
+** 주의할 것 $('div')처럼 문자열로 줘야 함, $(div) 이건 변수를 던져주는 거라서 틀렸음
+
+## 객체의 html 값 변경
+$('선택자').text('~'); 문자로 출력
+$('선택자').html('~'); html 태그도 출력
+$('선택자').empty(); 내용 삭제.
+$('선택자').attr('html태그속성','값'); 태그 내부 속성 변경 (ex src="#" => ('src', '#'))
+$('선택자').val(); value가 있는 html 태그의 value 변경 또는 가져오기 (ex input value="")
+
+## 객체의 css 값 변경
+$('선택자').css('속성'); 속성 값 가져오기
+$('선택자').css('속성', '값'); 속성 변경
+$('선택자').width(); 넓이 가져오기
+$('선택자').width(값); 넓이 변경
+$('선택자').height(); 높이 가져오기
+$('선택자').height(값); 높이 변경
+$('선택자').hide(); 가리기
+$('선택자').show(); 보이기
+
+## css애니메이션
+1/1000초 단위로 시간 + 액션 후 함수 실행
+선택자변수.fadeIn(시간, function(){...})
+선택자변수.fadeOut(시간, function(){...}) = display:none;
+선택자변수.slideUp(시간, function(){...})
+선택자변수.slideDown(시간, function(){...})
+선택자변수.animate({속성:목표값}, 시간)
+
+## css 클래스 추가 및 제거
+$('선택자').addClass('클래스명') 해당 html태그에 특정 클래스 추가
+$('선택자').removeClass('클래스명') 해당 html태그에 특정 클래스 제거
+
+## 객체 위치 옮김 및 제거
+선택자A.append(선택자B); A에 B를 제일 뒤에 추가해라
+선택자B.appendTo(선택자A);A에 B를 제일 뒤에 추가해라
+선택자A.prepend(선택자B); A에 B를 제일 앞에 추가해라
+선택자B.prependTo(선택자A);A에 B를 제일 앞에 추가해라
+선택자변수.remove(); 개체 삭제
+
+## 이벤트
+선택자변수.setInterval(함수명, 시간) 특정 함수를 정해진 시간마다 실행
+선택자변수.setTimeout(함수명, 시간) 특정 함수를 정해진 시간이 지난 후 실행
+선택자변수.click(function(){...}) 클릭시 함수 실행
+선택자변수.mouseenter(function(){...})
+선택자변수.mouseleave(function(){...})
+선택자변수.on('이벤트이름', function(){...})
+선택자변수.bind('이벤트이름',function(){...})
+선택자변수.이벤트이름 목록 : click/mouseover/mouseout/mouseenter/mouseleave/mousemove/mousedown/mouseup/mousewheel
+선택자변수.hover(function(){over 실행명령}, function(){ over 실행명령}) 1번째 인자는 호버일때, 두번째 인자는 호버 아닐때 실행
+선택자변수.focus(function(){input.addClass('active')}); 선택되었을 때(텍스트 창 선택 등) 함수 실행
+선택자변수.blur(function(){input.removeClass('active')});
